@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
     </properties>
 
     <licenses>
