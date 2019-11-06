@@ -5,13 +5,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * @Description:
+ * @Description: 获取用户相关密码以及角色
  * @Author: Xian
  * @CreateDate: 2019/10/31  16:41
  * @Version: 0.0.1-SHAPSHOT
@@ -40,5 +41,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // 使用自定义认证与授权
         auth.userDetailsService(userDetailsService());
+    }
+
+
+    /**
+     * url为检查access_token值是否正确,需要将其放行，不拦截。否则在访问相关数据的时候，会出现403 null异常
+     *
+     * @param web
+     * @throws Exception
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/oauth/check_token");
     }
 }

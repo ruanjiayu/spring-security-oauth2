@@ -29,4 +29,9 @@ public class TbContentController {
     public ResponseResult<List<TbContent>> list() {
        return new ResponseResult<List<TbContent>>(HttpStatus.OK.value(), HttpStatus.OK.toString(),tbContentService.listAll());
     }
+
+    @GetMapping("/view")
+    public ResponseResult view() {
+      return new ResponseResult<>(HttpStatus.OK.value(), HttpStatus.OK.toString(),"hello world");
+    }
 }

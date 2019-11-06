@@ -17,8 +17,21 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
 
+## 与认证中心进行了对接
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:8080/oauth/token
+      user-authorization-uri: http://localhost:8080/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:8080/oauth/check_token
+
 server:
   port: 8081
+  servlet:
+    context-path: /contents
 
 mybatis:
   type-aliases-package: com.xian.oauth2.resource.domain
