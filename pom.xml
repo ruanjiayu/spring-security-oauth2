@@ -131,6 +131,21 @@
         </profile>
     </profiles>
 
+    <distributionManagement>
+        <repository>
+            <!--id要同maven里面的setting.xml配置文件里面的内容id -->
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://192.168.10.12/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <!--id要同maven里面的setting.xml配置文件里面的内容id -->
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://192.168.10.12/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <id>spring-milestone</id>
@@ -149,7 +164,7 @@
             </snapshots>
         </repository>
     </repositories>
-
+    <!--配置代理仓库-->
     <pluginRepositories>
         <pluginRepository>
             <id>spring-milestone</id>
